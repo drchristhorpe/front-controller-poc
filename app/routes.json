@@ -1,26 +1,30 @@
 {
-    "root": {
-        "route":"/this",
+    "home": {
+        "route":"/",
         "root": "https://headless.ncvo.org.uk/",
         "strip": "",
+        "navbar": "home",
         "license_required": false
     },
     "blog": {
         "route":"/blog",
         "root": "https://blog.ncvo.org.uk/",
         "strip": "",
+        "navbar": "blog",
         "license_required": false
     },
     "content": {
         "route":"/content",
         "root": "https://headless.ncvo.org.uk/",
         "strip": "",
+        "navbar": "content",
         "license_required": false
     },
     "tools": {
         "route":"/tools",
         "root": "https://tools.ncvo.org.uk/",
         "strip": "",
-        "license_required": false
+        "navbar": "tools",
+        "license_required": true
     }
 }

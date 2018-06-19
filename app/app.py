@@ -10,7 +10,7 @@ filepath = 'routes.json'
 
 app = Flask(__name__)
 t = functions.load_trie(filepath, pygtrie.CharTrie())
-
+root = functions.load_root(filepath)
 
 ### Handlers ###
 
@@ -19,10 +19,18 @@ t = functions.load_trie(filepath, pygtrie.CharTrie())
 @app.route('/<path:path>')
 def hello(path):
     path = '/' + path
-    key, handler = t.longest_prefix(path)
-    if key is not None:
-        handler['url'] = path
-        return functions.handle_request(handler)
+    route_details = None
+
+    if path == '/':
+        route_details = root
+        route_details['url'] = path
+    else:
+        key, route_details = t.longest_prefix(path)
+        if key is not None:
+            route_details['url'] = path
+            
+    if route_details is not None:
+        return functions.handle_request(route_details)
     else:
         return errors.not_found(path)
 
@@ -31,6 +39,7 @@ def hello(path):
 @app.route('/reload')
 def reload():
     t = functions.load_trie(filepath, pygtrie.CharTrie())
+    root = functions.load_root(filepath)
     return 'reloaded'
 
 
