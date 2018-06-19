@@ -22,8 +22,7 @@ def hello(path):
     key, handler = t.longest_prefix(path)
     if key is not None:
         handler['url'] = path
-        text = json.dumps(handler)
-        return text
+        return functions.handle_request(handler)
     else:
         return errors.not_found(path)
 
