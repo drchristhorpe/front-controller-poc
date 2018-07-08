@@ -1,7 +1,7 @@
 {
     "home": {
         "route":"/",
-        "root": "https://headless.ncvo.org.uk/",
+        "root": "https://drchristhorpe.github.io/",
         "strip": "",
         "navbar": "home",
         "license_required": false

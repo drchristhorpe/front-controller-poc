@@ -1,4 +1,5 @@
 from flask import render_template
+import requests
 import json
 
 
@@ -24,4 +25,14 @@ def load_root(filepath, local=True):
 
 
 def handle_request(route_details):
-    return render_template('proxypage.html', route_details=route_details), 200
+    try:
+        data = fetch_url('https://drchristhorpe.github.io/')
+    except:
+        data = None
+
+    return render_template('proxypage.html', route_details=route_details, data=data), 200
+
+
+def fetch_url(url, format='html'):
+    r = requests.get(url)
+    return r.text

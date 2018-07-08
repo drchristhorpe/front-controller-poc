@@ -15,6 +15,8 @@ root = functions.load_root(filepath)
 ### Handlers ###
 
 ### Catch all handler ###
+
+
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def hello(path):
@@ -28,19 +30,11 @@ def hello(path):
         key, route_details = t.longest_prefix(path)
         if key is not None:
             route_details['url'] = path
-            
+
     if route_details is not None:
         return functions.handle_request(route_details)
     else:
         return errors.not_found(path)
-
-
-### Reload handler, for hot reloading of the routing and paywall Trie ###
-@app.route('/reload')
-def reload():
-    t = functions.load_trie(filepath, pygtrie.CharTrie())
-    root = functions.load_root(filepath)
-    return 'reloaded'
 
 
 ### Search handler, talks to search service ###
