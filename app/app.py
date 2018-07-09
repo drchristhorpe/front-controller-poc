@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, request
 import pygtrie
 import logging
 import json
@@ -32,7 +32,7 @@ def hello(path):
             route_details['url'] = path
 
     if route_details is not None:
-        return functions.handle_request(route_details)
+        return functions.handle_request('proxypage', route_details)
     else:
         return errors.not_found(path)
 
@@ -40,7 +40,15 @@ def hello(path):
 ### Search handler, talks to search service ###
 @app.route('/search')
 def search():
-    return "search handler"
+    key, route_details = t.longest_prefix('/search')
+    try:
+        route_details['params']['search_string'] = request.args.get('search')
+    except:
+        route_details['params']['search_string'] = None
+    if route_details['params']['search_string']:
+        return functions.handle_request('searchpage', route_details)
+    else:
+        return render_template('searchpage.html', route_details=route_details), 200
 
 
 ### Authentication handlers ###

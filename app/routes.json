@@ -26,5 +26,14 @@
         "strip": "",
         "navbar": "tools",
         "license_required": true
+    },
+    "search": {
+        "route":"/search",
+        "root": "https://drchristhorpe.github.io/search/sample.json",
+        "strip": "",
+        "navbar": "search",
+        "license_required": false,
+        "format": "json",
+        "params": {}
     }
 }

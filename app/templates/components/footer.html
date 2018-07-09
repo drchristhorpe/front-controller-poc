@@ -1,3 +1,11 @@
-<div>
-  Hello, I'm a footer
-</div>
+<footer class="footer">
+  <div class="container">
+    <div class="text-muted">
+      {% if route_details %}
+        {{route_details}}
+      {% else %}
+        not routed
+      {% endif %}
+    </div>
+  </div>
+</footer>

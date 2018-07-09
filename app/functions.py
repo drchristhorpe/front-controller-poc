@@ -24,13 +24,13 @@ def load_root(filepath, local=True):
     return routes['home']
 
 
-def handle_request(route_details):
+def handle_request(template_name, route_details):
     try:
         data = fetch_url('https://drchristhorpe.github.io/')
     except:
         data = None
 
-    return render_template('proxypage.html', route_details=route_details, data=data), 200
+    return render_template(template_name + '.html', route_details=route_details, data=data), 200
 
 
 def fetch_url(url, format='html'):
