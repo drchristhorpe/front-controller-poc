@@ -12,7 +12,11 @@
           <div class="input-group-prepend">
             <div class="input-group-text">Search terms</div>
           </div>
-          <input type="text" class="form-control" id="search" name="search" placeholder="charity">
+          {% if route_details.params.search_string %}
+            <input type="text" class="form-control" id="search" name="search" placeholder="charity" value="{{route_details.params.search_string}}">
+          {% else %}
+            <input type="text" class="form-control" id="search" name="search" placeholder="charity">
+          {% endif %}
         </div>
       </div>
       <div class="col-auto my-1">
@@ -20,10 +24,17 @@
       </div>
     </div>
   </form></div>
-
 {% if data %}
+<hr>
+<p>
+  Here are some results for <strong>{{route_details.params.search_string}}</strong>
+</p>
 <div>
-  Here are some results
+<ul>
+{% for item in data['items'] %}
+  <li><a href='{{item.url}}'>{{item.title}}</a></li>
+{% endfor %}
+</ul>
 </div>
 {% endif %}
 {% endblock %}

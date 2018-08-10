@@ -2,27 +2,28 @@
     "home": {
         "route":"/",
         "root": "https://drchristhorpe.github.io/",
-        "strip": "",
+        "strip": false,
         "navbar": "home",
         "license_required": false
     },
     "blog": {
         "route":"/blog",
-        "root": "https://blog.ncvo.org.uk/",
-        "strip": "",
+        "root": "https://drchristhorpe.github.io/blog/",
+        "strip": "/blog/",
         "navbar": "blog",
         "license_required": false
     },
     "content": {
         "route":"/content",
-        "root": "https://headless.ncvo.org.uk/",
+        "root": "https://drchristhorpe.github.io/content/",
         "strip": "",
         "navbar": "content",
+        "format": "markdown",
         "license_required": false
     },
     "tools": {
         "route":"/tools",
-        "root": "https://tools.ncvo.org.uk/",
+        "root": "https://drchristhorpe.github.io/tools/",
         "strip": "",
         "navbar": "tools",
         "license_required": true
@@ -30,7 +31,7 @@
     "search": {
         "route":"/search",
         "root": "https://drchristhorpe.github.io/search/sample.json",
-        "strip": "",
+        "strip": false,
         "navbar": "search",
         "license_required": false,
         "format": "json",
